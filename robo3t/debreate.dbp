@@ -1,0 +1,64 @@
+[DEBREATE-0.7.13]
+<<CTRL>>
+Package: robo3t
+Version: 1.1.1-1
+Maintainer: Manuel Bogner <manuel@coffeebeans.at>
+Architecture: all
+Priority: optional
+Description: robo3t
+ MongoDB Client
+
+<</CTRL>>
+<<FILES>>
+1
+/home/manuel/Documents/deb/robo3t/robo3t-1.1.1-linux-x86_64-c93c6b0 -> robo3t-1.1.1-linux-x86_64-c93c6b0 -> /opt
+<</FILES>>
+<<SCRIPTS>>
+<<PREINST>>
+0
+<</PREINST>>
+<<POSTINST>>
+1
+#!/bin/bash
+ROBO3T_HOME=/opt/robo3t
+
+rm -f $ROBO3T_HOME
+ln -s /opt/robo3t-1.1.1-linux-x86_64-c93c6b0 $ROBO3T_HOME
+
+rm -f /usr/bin/robo3t
+ln -s $ROBO3T_HOME/bin/robo3t /usr/bin/robo3t
+<</POSTINST>>
+<<PRERM>>
+1
+#!/bin/bash
+rm -f /opt/robo3t /usr/bin/robo3t
+<</PRERM>>
+<<POSTRM>>
+0
+<</POSTRM>>
+<</SCRIPTS>>
+<<CHANGELOG>>
+<<DEST>>DEFAULT<</DEST>>
+
+<</CHANGELOG>>
+<<COPYRIGHT>>
+
+<</COPYRIGHT>>
+<<MENU>>
+1
+Name=Robo3T
+Version=1.0
+Exec=/usr/bin/robo3t
+Icon=/opt/robo3t/logo-128x128.png
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Categories=Development;
+<</MENU>>
+<<BUILD>>
+1
+1
+1
+strip
+<</BUILD>>

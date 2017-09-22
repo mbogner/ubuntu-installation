@@ -1,0 +1,63 @@
+[DEBREATE-0.7.13]
+<<CTRL>>
+Package: apache-maven
+Version: 3.5.0-1
+Maintainer: Manuel Bogner <manuel@coffeebeans.at>
+Architecture: all
+Priority: optional
+Description: Apache Maven
+ Debian package for installing maven via apt.
+
+<</CTRL>>
+<<FILES>>
+1
+/home/manuel/Documents/deb/maven/apache-maven-3.5.0 -> apache-maven-3.5.0 -> /opt
+<</FILES>>
+<<SCRIPTS>>
+<<PREINST>>
+0
+<</PREINST>>
+<<POSTINST>>
+1
+#!/bin/bash
+MAVEN_HOME=/opt/apache-maven
+MAVEN_CONF=/etc/apache-maven
+
+rm -f $MAVEN_HOME
+ln -s /opt/apache-maven-3.5.0 $MAVEN_HOME
+
+if [ ! -f $MAVEN_CONF/settings.xml ]; then
+  mkdir -p $MAVEN_CONF
+  mv $MAVEN_HOME/conf/settings.xml $MAVEN_CONF
+  ln -s $MAVEN_CONF/settings.xml $MAVEN_HOME/conf/settings.xml
+fi
+
+rm -f /usr/bin/mvn /usr/bin/mvnDebug
+ln -s $MAVEN_HOME/bin/mvn /usr/bin/mvn
+ln -s $MAVEN_HOME/bin/mvnDebug /usr/bin/mvnDebug
+<</POSTINST>>
+<<PRERM>>
+1
+#!/bin/bash
+rm -f /opt/apache-maven /usr/bin/mvn /usr/bin/mvnDebug
+<</PRERM>>
+<<POSTRM>>
+0
+<</POSTRM>>
+<</SCRIPTS>>
+<<CHANGELOG>>
+<<DEST>>DEFAULT<</DEST>>
+
+<</CHANGELOG>>
+<<COPYRIGHT>>
+
+<</COPYRIGHT>>
+<<MENU>>
+0
+<</MENU>>
+<<BUILD>>
+1
+1
+1
+strip
+<</BUILD>>

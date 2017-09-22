@@ -1,0 +1,5 @@
+*/*.deb
+*/*.zip
+*/*.gz
+*/*.tgz
+*/*.lintian

@@ -1,0 +1,6 @@
+if [ ! -d $DIRECTORY ]; then
+        if [ ! -f $FILENAME ]; then
+                wget $URL
+        fi
+        $UNPACK $FILENAME
+fi
