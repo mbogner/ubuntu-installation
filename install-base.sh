@@ -20,6 +20,10 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 # flatpak
 sudo add-apt-repository -y ppa:alexlarsson/flatpak
 
+# wine
+wget --quiet -O - https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
+sudo apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu/
+
 # nodejs - runs apt-get update
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
@@ -36,5 +40,7 @@ sudo apt install -y \
 	wireshark htop iotop nmap \
 	gimp \
 	chromium-browser firefox thunderbird \
-	flatpak && \
+	flatpak \
+	winehq-devel \
+	&& \
 sudo apt-get autoremove -y --purge
