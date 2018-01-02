@@ -30,6 +30,8 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt -y dist-upgrade && \
 sudo apt install -y \
 	oracle-java9-installer oracle-java9-unlimited-jce-policy \
+	oracle-java8-installer oracle-java8-unlimited-jce-policy \
+	oracle-java9-set-default \
 	debreate \
 	telegram \
 	nodejs \
