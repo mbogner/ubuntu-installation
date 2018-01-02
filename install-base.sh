@@ -3,7 +3,7 @@
 # java
 sudo add-apt-repository -y ppa:webupd8team/java
 
-# debreate
+# debreate for creating deb packages
 sudo add-apt-repository -y ppa:antumdeluge/debreate
 
 # telegram
@@ -37,6 +37,7 @@ sudo apt install -y \
 	nodejs \
 	docker-ce apt-transport-https ca-certificates curl software-properties-common \
 	postgresql-server-dev-all pgadmin3 \
+	mysql-client \
 	build-essential git git-svn subversion unzip \
 	pwgen vim \
 	wireshark htop iotop nmap \
@@ -55,9 +56,17 @@ sudo usermod -aG docker manuel
 sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
-# install appimaged
+# install appimaged to autodiscover app images
 wget -c "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimaged_1.0_amd64.deb"
 sudo dpkg -i appimaged_*.deb
 rm appimaged_*.deb
 systemctl --user enable appimaged
 systemctl --user start appimaged
+
+# install dbeaver - database client
+wget -c "https://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb"
+sudo dpkg -i dbeaver-ce_latest_amd64.deb
+rm dbeaver-ce_latest_amd64.deb
+
+###############################################################################
+echo "done"
