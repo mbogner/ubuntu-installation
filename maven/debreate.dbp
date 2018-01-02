@@ -1,7 +1,7 @@
 [DEBREATE-0.7.13]
 <<CTRL>>
 Package: apache-maven
-Version: 3.5.0-1
+Version: 3.5.2-1
 Maintainer: Manuel Bogner <manuel@coffeebeans.at>
 Architecture: all
 Priority: optional
@@ -11,7 +11,7 @@ Description: Apache Maven
 <</CTRL>>
 <<FILES>>
 1
-/home/manuel/Documents/deb/maven/apache-maven-3.5.0 -> apache-maven-3.5.0 -> /opt
+//home/manuel/ubuntu-installation/maven/apache-maven-3.5.2 -> apache-maven-3.5.2 -> /opt
 <</FILES>>
 <<SCRIPTS>>
 <<PREINST>>
@@ -24,7 +24,7 @@ MAVEN_HOME=/opt/apache-maven
 MAVEN_CONF=/etc/apache-maven
 
 rm -f $MAVEN_HOME
-ln -s /opt/apache-maven-3.5.0 $MAVEN_HOME
+ln -s /opt/apache-maven-3.5.2 $MAVEN_HOME
 
 if [ ! -f $MAVEN_CONF/settings.xml ]; then
   mkdir -p $MAVEN_CONF

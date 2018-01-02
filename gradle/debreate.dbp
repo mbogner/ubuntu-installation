@@ -1,7 +1,7 @@
 [DEBREATE-0.7.13]
 <<CTRL>>
 Package: gradle
-Version: 4.2-1
+Version: 4.4.1-1
 Maintainer: Manuel Bogner <manuel@coffeebeans.at>
 Architecture: all
 Priority: optional
@@ -11,7 +11,7 @@ Description: Gradle
 <</CTRL>>
 <<FILES>>
 1
-/home/manuel/Documents/deb/gradle/gradle-4.2 -> gradle-4.2 -> /opt
+/home/manuel/ubuntu-installation/gradle/gradle-4.4.1 -> gradle-4.4.1 -> /opt
 <</FILES>>
 <<SCRIPTS>>
 <<PREINST>>
@@ -23,7 +23,7 @@ Description: Gradle
 GRADLE_HOME=/opt/gradle
 
 rm -f $GRADLE_HOME
-ln -s /opt/gradle-4.2 $GRADLE_HOME
+ln -s /opt/gradle-4.4.1 $GRADLE_HOME
 
 rm -f /usr/bin/gradle
 ln -s $GRADLE_HOME/bin/gradle /usr/bin/gradle

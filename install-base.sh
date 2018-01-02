@@ -42,5 +42,6 @@ sudo apt install -y \
 	chromium-browser firefox thunderbird \
 	flatpak \
 	winehq-devel \
+	keepassx \
 	&& \
 sudo apt-get autoremove -y --purge
