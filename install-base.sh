@@ -33,7 +33,7 @@ sudo apt install -y \
 	debreate \
 	telegram \
 	nodejs \
-	docker apt-transport-https ca-certificates curl software-properties-common \
+	docker-ce apt-transport-https ca-certificates curl software-properties-common \
 	postgresql-server-dev-all pgadmin3 \
 	build-essential git git-svn subversion unzip \
 	pwgen vim \
@@ -45,3 +45,17 @@ sudo apt install -y \
 	keepassx \
 	&& \
 sudo apt-get autoremove -y --purge
+
+# docker group needed
+sudo usermod -aG docker manuel
+
+# install compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# install appimaged
+wget -c "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimaged_1.0_amd64.deb"
+sudo dpkg -i appimaged_*.deb
+rm appimaged_*.deb
+systemctl --user enable appimaged
+systemctl --user start appimaged
