@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# java
-sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt update && sudo apt install -y curl
 
 # debreate for creating deb packages
 sudo add-apt-repository -y ppa:antumdeluge/debreate
@@ -14,7 +13,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
 # postgres
-echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 # flatpak
@@ -25,13 +24,10 @@ wget --quiet -O - https://dl.winehq.org/wine-builds/Release.key | sudo apt-key a
 sudo apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu/
 
 # nodejs - runs apt-get update
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 sudo apt -y dist-upgrade && \
 sudo apt install -y \
-	oracle-java9-installer oracle-java9-unlimited-jce-policy \
-	oracle-java8-installer oracle-java8-unlimited-jce-policy \
-	oracle-java9-set-default \
 	debreate \
 	telegram \
 	nodejs \
@@ -53,20 +49,9 @@ sudo apt-get autoremove -y --purge
 sudo usermod -aG docker manuel
 
 # install compose
-sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+# https://docs.docker.com/compose/install/#install-compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-
-# install appimaged to autodiscover app images
-wget -c "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimaged_1.0_amd64.deb"
-sudo dpkg -i appimaged_*.deb
-rm appimaged_*.deb
-systemctl --user enable appimaged
-systemctl --user start appimaged
-
-# install dbeaver - database client
-wget -c "https://dbeaver.jkiss.org/files/dbeaver-ce_latest_amd64.deb"
-sudo dpkg -i dbeaver-ce_latest_amd64.deb
-rm dbeaver-ce_latest_amd64.deb
 
 ###############################################################################
 echo "done"
